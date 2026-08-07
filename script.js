@@ -12,6 +12,11 @@ function updateClock() {
 
     document.getElementById("clock").innerHTML =
         `${hours}:${minutes}:${seconds} <span class="ampm">${meridian}</span>`;
+
+    document.getElementById("date").textContent = new Intl.DateTimeFormat(
+        "en-GB",
+        { weekday: "long", day: "numeric", month: "long", year: "numeric" }
+    ).format(now);
 }
 
 updateClock();
