@@ -21,3 +21,50 @@ function updateClock() {
 
 updateClock();
 setInterval(updateClock, 1000);
+
+const backgroundMusic = document.getElementById("background-music");
+const musicMessage = document.getElementById("music-message");
+const backgroundImages = {
+    "1": "img/img1.png",
+    "2": "img/img2.png",
+    "3": "img/img3.png",
+    "4": "img/img4.jpg",
+    "5": "img/img5.png",
+    "6": "img/img6.jpg",
+    "7": "img/img7.jpg",
+    "8": "img/img8.jpg",
+    "9": "img/img9.jpg",
+    "0": "img/img0.jpg"
+};
+
+function playMusic() {
+    backgroundMusic.play().then(() => {
+        musicMessage.hidden = true;
+    }).catch(() => {
+        musicMessage.hidden = false;
+    });
+}
+
+// Browsers may block audio autoplay until the page receives an interaction.
+playMusic();
+
+document.addEventListener("keydown", (event) => {
+    const selectedBackground = backgroundImages[event.key];
+
+    if (selectedBackground) {
+        document.body.style.backgroundImage = `url("${selectedBackground}")`;
+        return;
+    }
+
+    if (event.code === "Space") {
+        event.preventDefault();
+
+        if (backgroundMusic.paused) {
+            playMusic();
+        } else {
+            backgroundMusic.pause();
+            musicMessage.textContent = "Press Space to resume music";
+            musicMessage.hidden = false;
+        }
+    }
+});
