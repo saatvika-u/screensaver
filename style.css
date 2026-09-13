@@ -47,6 +47,15 @@ body{
     
 }
 
+#audio-bars{
+    --bar-count: 36;
+    --bar-width: 4px;
+    --bar-gap: 5px;
+    width: min(70vw, 400px);
+    height: 68px;
+    margin-top: 20px;
+}
+
 #music-message{
     position: fixed;
     right: 24px;
@@ -79,6 +88,14 @@ body{
 
     #date{
         font-size: 1rem;
+    }
+
+    #audio-bars{
+        --bar-count: 26;
+        --bar-width: 3px;
+        --bar-gap: 4px;
+        height: 52px;
+        margin-top: 16px;
     }
 
     #music-message{
